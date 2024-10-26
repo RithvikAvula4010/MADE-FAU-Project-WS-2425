@@ -24,15 +24,15 @@ pipeline AirportPipeline {
    block AirportTableInterpreter oftype TableInterpreter {
     header: true;
     columns: [
-      "Lfd. Nummer" oftype text,
+      "Lfd. Nummer" oftype Integer,
       "mpgName des Flughafens" oftype text,
       "Ort" oftype text,
       "Land" oftype text,
       "IATA" oftype text,
       "ICAO" oftype text,
-      "Latitude" oftype text,
-      "Longitude" oftype text,
-      "Altitude" oftype text
+      "Latitude" oftype decimal,
+      "Longitude" oftype decimal,
+      "Altitude" oftype integer
     ];
   }
 
