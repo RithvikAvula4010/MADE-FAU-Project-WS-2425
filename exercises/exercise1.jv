@@ -25,7 +25,7 @@ pipeline AirportPipeline {
     header: true;
     columns: [
       "Lfd. Nummer" oftype integer,
-      "mpgName des Flughafens" oftype text,
+      "Name des Flughafens" oftype text,
       "Ort" oftype text,
       "Land" oftype text,
       "IATA" oftype text,
