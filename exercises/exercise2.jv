@@ -37,7 +37,7 @@ pipeline City_Autumn_Planting {
 	 }
 	 
 	    constraint City_Allow oftype RegexConstraint {
-        regex: /^Vogelsang-/;
+        regex: /^Vogelsang$/;
     }
 
     valuetype City_Autumn_AllowConstrain oftype text {
