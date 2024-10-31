@@ -3,7 +3,7 @@ pipeline City_Autumn_Planting {
     City_Autumn_Planting_HttpExtractor
         -> City_Autumn_Planting_TextFileInterpreter
         -> City_Autumn_Planting_CSVInterpreter
-		-> City_Autumn_Planting_ColumnDeleter
+	-> City_Autumn_Planting_ColumnDeleter
         -> City_Autumn_Planting_TableInterpreter
         -> City_Autumn_Planting_Loader;
     
@@ -32,12 +32,12 @@ pipeline City_Autumn_Planting {
         ];
     }
 
-	 block City_Autumn_Planting_ColumnDeleter oftype ColumnDeleter {
+	block City_Autumn_Planting_ColumnDeleter oftype ColumnDeleter {
 	   delete: [column E];
 	 }
 	 
-	    constraint City_Allow oftype RegexConstraint {
-        regex: /^Vogelsang$/;
+	constraint City_Allow oftype RegexConstraint {
+        regex: /^Vogelsang*/;
     }
 
     valuetype City_Autumn_AllowConstrain oftype text {
