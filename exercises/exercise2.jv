@@ -48,7 +48,7 @@ pipeline City_Autumn_Planting {
     }
 
 	constraint IDAllow oftype RegexConstraint {
-        regex: /^\d{1,3}\.d+, \d{1,3}\.\d+$/;
+        regex: /([0-9]{1,3}\.[0-9]+), ([0-9]{1,3}\.[0-9]+)/;
     }
 
     valuetype geopoints_Constrain oftype text {
