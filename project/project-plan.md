@@ -25,12 +25,25 @@ As LAPD works to create the new NIBRS-compatible datasets, users will initially 
 
 <!-- Describe each datasources you plan to use in a section. Use the prefic "DatasourceX" where X is the id of the datasource. -->
 
-### Datasource1: ExampleSource
-* Metadata URL: https://mobilithek.info/offers/-6901989592576801458
-* Data URL: https://raw.githubusercontent.com/od-ms/radverkehr-zaehlstellen/main/100035541/2019-01.csv
+### Datasource1: Crime Data from 2020 to Present(2024)
+* Metadata Context: https://project-open-data.cio.gov/v1.1/schema/catalog.jsonld
+* Metadata Catalog ID: 	https://data.lacity.org/data.json
+* License: 	http://creativecommons.org/publicdomain/zero/1.0/legalcode
+* Data URL: https://data.lacity.org/api/views/2nrs-mtv8/rows.csv?accessType=DOWNLOAD
 * Data Type: CSV
 
-Short description of the DataSource.
+##### Datasource Description:
+Crime incidents in Los Angeles from 2020 to the present are displayed in this dataset. Since the data is derived from paper reports, a few minor mistakes might exist. For privacy reasons, addresses are only listed to the closest hundred blocks, and location data is displayed as (0°, 0°) if it is missing. Users can post comments or questions, and the data is as accurate as possible.
+
+### Datasource2: Arrest Data from 2020 to Present(2024)
+* Metadata Context: https://project-open-data.cio.gov/v1.1/schema/catalog.jsonld
+* Metadata Catalog ID: 	https://data.lacity.org/data.json
+* License: 	http://creativecommons.org/publicdomain/zero/1.0/legalcode
+* Data URL: https://data.lacity.org/api/views/amvf-fr72/rows.csv?accessType=DOWNLOAD
+* Data Type: CSV
+
+##### Datasource Description:
+This dataset displays arrests that have occurred in Los Angeles since 2020. There may be minor errors because the data is derived from paper reports. Location data is displayed as (0.0000°, 0.0000°) if it is absent, and addresses are only displayed by the closest hundred blocks for privacy reasons. People can leave comments or ask questions, and the information is as accurate as possible.
 
 ## Work Packages
 
