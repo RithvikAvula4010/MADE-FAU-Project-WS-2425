@@ -49,7 +49,7 @@ This dataset displays arrests that have occurred in Los Angeles since 2020. Ther
 
 <!-- List of work packages ordered sequentially, each pointing to an issue with more details. -->
 
-1. Example Issue [#1][i1]
+1. Explore Datasets [#1][i1]
 2. ...
 
-[i1]: https://github.com/jvalue/made-template/issues/1
+[i1]: https://github.com/prathameshagare02/made-template-WS2425/issues/1
