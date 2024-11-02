@@ -25,19 +25,34 @@ pipeline treesPipeline {
     delete: [column E];
   }
 
-
+  
    block treesTableInterpreter oftype TableInterpreter {
     header: true;
     columns: [
       "lfd_nr" oftype integer,
-      "stadtteil" oftype text,
+      "stadtteil" oftype stadt,
       "standort" oftype text,
       "baumart_botanisch" oftype text,
       "baumart_deutsch" oftype text,
-      "id" oftype text,
+      "id" oftype Coordinates,
       "baumfamilie" oftype text
        ];
   }
+  
+  valuetype stadt oftype text {
+		constraints: [Furth];
+	}
+
+	constraint Furth on text:
+    value matches /^Vogelsang*/;
+
+
+    valuetype Coordinates oftype text {
+		constraints: [Id];
+	}
+
+    constraint Id on text:
+    value matches /^\d{1,3}\.\d+, \d{1,3}\.\d+$/;
 
 
     block treesLoader oftype SQLiteLoader {
