@@ -1,0 +1,136 @@
+pipeline ArrestCrimeDataPipeline {
+
+    CrimedataFeedExtractor
+        -> CrimedataTextFileInterpreter
+        -> CrimedataCSVInterpreter
+        -> CrimeDataTableInterpreter
+        -> CrimedataLoader;
+    
+    block CrimedataTextFileInterpreter oftype TextFileInterpreter {    }
+
+    block CrimedataCSVInterpreter oftype CSVInterpreter {
+	    delimiter: ",";
+    }
+	
+
+    block CrimedataFeedExtractor oftype HttpExtractor {
+		url: "https://data.lacity.org/api/views/2nrs-mtv8/rows.csv?accessType=DOWNLOAD";
+    }
+
+	//Changing feedextracter because of too much time taking to export the data.
+
+    //block CrimedataFeedExtractor oftype LocalFileExtractor {
+    //filePath: "Crime_Data_from_2020_to_Present.csv";
+	//}
+
+
+	//Taking default text datatype for all the columns because of JV interpreter taking too much time to export the data.
+
+    block CrimeDataTableInterpreter oftype TableInterpreter {
+        header: true;
+        columns: [
+
+        "DR_NO" oftype text,
+		"Date Rptd" oftype text,
+		"DATE OCC" oftype text,
+		"TIME OCC" oftype text,
+		"AREA" oftype text,
+		"AREA NAME" oftype text,
+		"Rpt Dist No" oftype text,
+		"Part 1-2" oftype text,
+		"Crm Cd" oftype text,
+		"Crm Cd Desc" oftype text,
+		"Mocodes" oftype text,
+		"Vict Age" oftype text,
+		"Vict Sex" oftype text,
+		"Vict Descent" oftype text,
+		"Premis Cd" oftype text,
+		"Premis Desc" oftype text,
+		"Weapon Used Cd" oftype text,
+		"Weapon Desc" oftype text,
+		"Status" oftype text,
+		"Status Desc" oftype text,
+		"Crm Cd 1" oftype text,
+		"Crm Cd 2" oftype text,
+		"Crm Cd 3" oftype text,
+		"Crm Cd 4" oftype text,
+		"LOCATION" oftype text,
+		"Cross Street" oftype text,
+		"LAT" oftype text,
+		"LON" oftype text
+        ];
+    }
+
+
+    block CrimedataLoader oftype SQLiteLoader {
+        table: "crimedata";
+        file: "./crimedata.sqlite";
+    }
+
+
+	ArrestdataFeedExtractor
+			-> ArrestdataTextFileInterpreter
+			-> ArrestdataCSVInterpreter
+			-> ArrestdataTableInterpreter
+			-> ArrestdataLoader;
+		
+		block ArrestdataTextFileInterpreter oftype TextFileInterpreter {    }
+
+		block ArrestdataCSVInterpreter oftype CSVInterpreter {
+			delimiter: ",";
+		}
+		
+
+		block ArrestdataFeedExtractor oftype HttpExtractor {
+			url: "https://data.lacity.org/api/views/amvf-fr72/rows.csv?accessType=DOWNLOAD";
+		}
+
+		//Changing feedextracter because of too much time taking to export the data.
+
+		//block ArrestdataFeedExtractor oftype LocalFileExtractor {
+		//filePath: "Arrest_Data_from_2020_to_Present.csv";
+		//}
+
+
+		//Taking default text datatype for all the columns because of JV interpreter taking too much time to export the data.
+
+		block ArrestdataTableInterpreter oftype TableInterpreter {
+			header: true;
+			columns: [
+
+			"Report ID" oftype text,
+			"Report Type" oftype text,
+			"Arrest Date" oftype text,
+			"Time" oftype text,
+			"Area ID" oftype text,
+			"Area Name" oftype text,
+			"Reporting District" oftype text,
+			"Age" oftype text,
+			"Sex Code" oftype text,
+			"Descent Code" oftype text,
+			"Charge Group Code" oftype text,
+			"Charge Group Description" oftype text,
+			"Arrest Type Code" oftype text,
+			"Charge" oftype text,
+			"Charge Description" oftype text,
+			"Disposition Description" oftype text,
+			"Address" oftype text,
+			"Cross Street" oftype text,
+			"LAT" oftype text,
+			"LON" oftype text,
+			"Location" oftype text,
+			"Booking Date" oftype text,
+			"Booking Time" oftype text,
+			"Booking Location" oftype text,
+			"Booking Location Code" oftype text
+			];
+		}
+
+
+		block ArrestdataLoader oftype SQLiteLoader {
+			table: "arrestdata";
+			file: "./arrestdata.sqlite";
+		}
+
+
+}
