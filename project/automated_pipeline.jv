@@ -64,7 +64,7 @@ pipeline ArrestCrimeDataPipeline {
 
     block CrimedataLoader oftype SQLiteLoader {
         table: "crimedata";
-        file: "./crimedata.sqlite";
+        file: "./data/crimedata.sqlite";
     }
 
 
@@ -129,7 +129,7 @@ pipeline ArrestCrimeDataPipeline {
 
 		block ArrestdataLoader oftype SQLiteLoader {
 			table: "arrestdata";
-			file: "./arrestdata.sqlite";
+			file: "./data/arrestdata.sqlite";
 		}
 
 
