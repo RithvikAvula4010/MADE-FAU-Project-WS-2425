@@ -10,6 +10,7 @@ pipeline ArrestCrimeDataPipeline {
 
     block CrimedataCSVInterpreter oftype CSVInterpreter {
 	    delimiter: ",";
+		enclosing: '"';
     }
 	
 
@@ -20,7 +21,7 @@ pipeline ArrestCrimeDataPipeline {
 	//Changing feedextracter because of too much time taking to export the data.
 
     //block CrimedataFeedExtractor oftype LocalFileExtractor {
-    //filePath: "Crime_Data_from_2020_to_Present.csv";
+	//	filePath: "Crime_Data_from_2020_to_Present.csv";
 	//}
 
 
@@ -30,18 +31,18 @@ pipeline ArrestCrimeDataPipeline {
         header: true;
         columns: [
 
-        "DR_NO" oftype text,
+        "DR_NO" oftype integer,
 		"Date Rptd" oftype text,
 		"DATE OCC" oftype text,
-		"TIME OCC" oftype text,
-		"AREA" oftype text,
+		"TIME OCC" oftype integer,
+		"AREA" oftype integer,
 		"AREA NAME" oftype text,
-		"Rpt Dist No" oftype text,
-		"Part 1-2" oftype text,
-		"Crm Cd" oftype text,
+		"Rpt Dist No" oftype integer,
+		"Part 1-2" oftype integer,
+		"Crm Cd" oftype integer,
 		"Crm Cd Desc" oftype text,
 		"Mocodes" oftype text,
-		"Vict Age" oftype text,
+		"Vict Age" oftype valid_age_check,
 		"Vict Sex" oftype text,
 		"Vict Descent" oftype text,
 		"Premis Cd" oftype text,
@@ -56,10 +57,11 @@ pipeline ArrestCrimeDataPipeline {
 		"Crm Cd 4" oftype text,
 		"LOCATION" oftype text,
 		"Cross Street" oftype text,
-		"LAT" oftype text,
-		"LON" oftype text
+		"LAT" oftype decimal,
+		"LON" oftype decimal
         ];
     }
+
 
 
     block CrimedataLoader oftype SQLiteLoader {
@@ -78,6 +80,8 @@ pipeline ArrestCrimeDataPipeline {
 
 		block ArrestdataCSVInterpreter oftype CSVInterpreter {
 			delimiter: ",";
+			enclosing: '"';
+
 		}
 		
 
@@ -88,7 +92,7 @@ pipeline ArrestCrimeDataPipeline {
 		//Changing feedextracter because of too much time taking to export the data.
 
 		//block ArrestdataFeedExtractor oftype LocalFileExtractor {
-		//filePath: "Arrest_Data_from_2020_to_Present.csv";
+		//	filePath: "Arrest_Data_from_2020_to_Present.csv";
 		//}
 
 
@@ -98,15 +102,15 @@ pipeline ArrestCrimeDataPipeline {
 			header: true;
 			columns: [
 
-			"Report ID" oftype text,
+			"Report ID" oftype integer,
 			"Report Type" oftype text,
 			"Arrest Date" oftype text,
 			"Time" oftype text,
-			"Area ID" oftype text,
+			"Area ID" oftype integer,
 			"Area Name" oftype text,
-			"Reporting District" oftype text,
-			"Age" oftype text,
-			"Sex Code" oftype text,
+			"Reporting District" oftype integer,
+			"Age" oftype valid_age_check,
+			"Sex Code" oftype allowed_Sex_Type,
 			"Descent Code" oftype text,
 			"Charge Group Code" oftype text,
 			"Charge Group Description" oftype text,
@@ -116,8 +120,8 @@ pipeline ArrestCrimeDataPipeline {
 			"Disposition Description" oftype text,
 			"Address" oftype text,
 			"Cross Street" oftype text,
-			"LAT" oftype text,
-			"LON" oftype text,
+			"LAT" oftype decimal,
+			"LON" oftype decimal,
 			"Location" oftype text,
 			"Booking Date" oftype text,
 			"Booking Time" oftype text,
@@ -131,6 +135,31 @@ pipeline ArrestCrimeDataPipeline {
 			table: "arrestdata";
 			file: "./data/arrestdata.sqlite";
 		}
+		
+		
+	valuetype valid_age_check oftype integer {
+	  // only check if age is positive or not
+	  constraints: [
+		OnlyPositiveAge,
+	  ];
+	}
+	
+	constraint OnlyPositiveAge oftype RangeConstraint{
+		lowerBound: -1;
+		lowerBoundInclusive: false;
+	}
+	
+	valuetype allowed_Sex_Type oftype text {
+	  // Check valid sex type
+	  constraints: [
+		valid_Sex_Check,
+	  ];
+	}
+	
+	constraint valid_Sex_Check oftype AllowlistConstraint {
+		allowlist: ["F", "M",];
+	}
+
 
 
 }
