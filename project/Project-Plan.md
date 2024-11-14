@@ -16,15 +16,19 @@ This project allows you to explore the relationship between generation sources a
 ## Datasources
 
 ### Datasource1: Electricity Sales by Sector
-•	Metadata URL: https://catalog.data.gov/dataset/electricity-sales-by-sector-gwh-beginning-1980-1f109/resource/65764672-4abb-4bcf-bd76-3eba55f77315
-•	Data URL: https://catalog.data.gov/dataset/electricity-sales-by-sector-gwh-beginning-1980-1f109/resource/65764672-4abb-4bcf-bd76-3eba55f77315
+•	Metadata URL: https://catalog.data.gov/dataset/electricity-sales-by-sector-gwh-beginning-1980-1f109/resource/65764672-4abb-4bcf-bd76-3eba55f77315.
+
+•	Data URL: https://catalog.data.gov/dataset/electricity-sales-by-sector-gwh-beginning-1980-1f109/resource/65764672-4abb-4bcf-bd76-3eba55f77315.
+
 •	Data Type: CSV
 
 This dataset is available in data.gov contains all the data related to electricity sales by sector in US
 
 ### Datasource2: Electricity Generation by Fuel Type
-•	Metadata URL: https://catalog.data.gov/dataset/electric-generation-by-fuel-type-gwh-beginning-1960/resource/df1528d1-bdd0-4594-8ef8-793b298cfdd5
-•	Data URL: https://catalog.data.gov/dataset/electric-generation-by-fuel-type-gwh-beginning-1960/resource/df1528d1-bdd0-4594-8ef8-793b298cfdd5
+•	Metadata URL: https://catalog.data.gov/dataset/electric-generation-by-fuel-type-gwh-beginning-1960/resource/df1528d1-bdd0-4594-8ef8-793b298cfdd5.
+
+•	Data URL: https://catalog.data.gov/dataset/electric-generation-by-fuel-type-gwh-beginning-1960/resource/df1528d1-bdd0-4594-8ef8-793b298cfdd5.
+
 •	Data Type: CSV
 
 This dataset is available in data.gov contains all the data related to electricity generation by fuel type in US
