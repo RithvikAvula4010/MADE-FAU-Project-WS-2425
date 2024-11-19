@@ -59,7 +59,7 @@ pipeline GraphExtractorCellPipeline {
     header: true;
     columns: [
       "Country Code" oftype CountryCodeAlpha3,
-      "Bond Issuance Share" oftype decimal
+      "Bond Issuance Share" oftype BondInsuranceCheck
     ];
   }
 
@@ -72,10 +72,26 @@ pipeline GraphExtractorCellPipeline {
     header: true;
     columns: [
       "Country Code" oftype CountryCodeAlpha3,
-      "GDP per Capita" oftype decimal,
+      "GDP per Capita" oftype PositiveDecimal,
 
     ];
   }
+  
+   constraint onlyPositive on decimal:
+        value >= 0;
+
+    valuetype PositiveDecimal oftype decimal {
+        constraints: [
+            onlyPositive,
+        ];
+    }
+	
+	constraint BondInsuranceConstraint on decimal:
+        value >= 0 and value <= 1;
+    
+    valuetype BondInsuranceCheck oftype decimal {
+        constraints:[BondInsuranceConstraint];
+    }
 
   block GDPPerCapitaCellsLoader oftype SQLiteLoader {
     table: "gdpPerCapita";
