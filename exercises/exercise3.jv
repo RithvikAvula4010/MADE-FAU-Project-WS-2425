@@ -20,6 +20,9 @@ pipeline GraphExtractorCellPipeline {
 	-> GdpPerCapitaTableInterpreter
     -> GdpPerCapitaCellsLoader;
 	
+  NameHeaderWriter
+  	-> LightTrappingSiliconSolarCellsTableInterpreter
+    -> LightTrappingSiliconSolarCellsLoader;
   
   // 5. Once the XLSX file is interpreted, we can split the pipeline and 
   // work separately on the different sheets from our input file
