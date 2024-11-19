@@ -13,16 +13,16 @@ pipeline GraphExtractorCellPipeline {
 
   
   GraphExtractorCellExtractor
-    -> LightTrappingSiliconSolarCellsTextXLSXInterpreter
-	-> LightTrappingSiliconSolarCellsSheetpicker
-    -> CarsCoreDataSelector
-	-> NameHeaderWriter
-	-> GdpPerCapitaTableInterpreter
-    -> GdpPerCapitaCellsLoader;
+    -> GraphDataCellsTextXLSXInterpreter
+	-> GraphCellsSheetpicker
+    -> GraphDataRangeSelector
+	-> GraphColumnHeaderWriter
+	-> GDPPerCapitaTableInterpreter
+    -> GDPPerCapitaCellsLoader;
 	
-  NameHeaderWriter
-  	-> LightTrappingSiliconSolarCellsTableInterpreter
-    -> LightTrappingSiliconSolarCellsLoader;
+  GraphColumnHeaderWriter
+  	-> BondIssuanceTableInterpreter
+    -> BondIssuanceCellsLoader;
   
   // 5. Once the XLSX file is interpreted, we can split the pipeline and 
   // work separately on the different sheets from our input file
@@ -33,19 +33,19 @@ pipeline GraphExtractorCellPipeline {
 
   // 3. The incoming file is interpreted as a XLSX file and transformed into a Workbook
   // Workbooks contain at least 1 Sheet. Every sheet has a unique name. 
-  block LightTrappingSiliconSolarCellsTextXLSXInterpreter oftype XLSXInterpreter { }
+  block GraphDataCellsTextXLSXInterpreter oftype XLSXInterpreter { }
 
   // 4.1 Here, we pick one sheet with the name 'RefractiveIndexSi GaAs' from the Workbook to use within our pipeline. 
   // The output type from SheetPicker is Sheet, which was already introduced in the cars example
-  block LightTrappingSiliconSolarCellsSheetpicker oftype SheetPicker {
+  block GraphCellsSheetpicker oftype SheetPicker {
     sheetName: 'Figure S5.1.2';
   }
   
-   block CarsCoreDataSelector oftype CellRangeSelector {
+   block GraphDataRangeSelector oftype CellRangeSelector {
    select: range P2:S45;
 	}
 
-  block NameHeaderWriter oftype CellWriter {
+  block GraphColumnHeaderWriter oftype CellWriter {
     at: range A1:D1;
     write: [
       "Country Code",
@@ -55,29 +55,29 @@ pipeline GraphExtractorCellPipeline {
     ];
   }
 
-  block LightTrappingSiliconSolarCellsTableInterpreter oftype TableInterpreter {
+  block BondIssuanceTableInterpreter oftype TableInterpreter {
     header: true;
     columns: [
-      "Country Code" oftype text,
+      "Country Code" oftype CountryCodeAlpha3,
       "Bond Issuance Share" oftype decimal
     ];
   }
 
-  block LightTrappingSiliconSolarCellsLoader oftype SQLiteLoader {
+  block BondIssuanceCellsLoader oftype SQLiteLoader {
     table: "bondIssuance";
     file: "./country-stats.sqlite";
   }
   
-    block GdpPerCapitaTableInterpreter oftype TableInterpreter {
+    block GDPPerCapitaTableInterpreter oftype TableInterpreter {
     header: true;
     columns: [
-      "Country Code" oftype text,
+      "Country Code" oftype CountryCodeAlpha3,
       "GDP per Capita" oftype decimal,
 
     ];
   }
 
-  block GdpPerCapitaCellsLoader oftype SQLiteLoader {
+  block GDPPerCapitaCellsLoader oftype SQLiteLoader {
     table: "gdpPerCapita";
     file: "./country-stats.sqlite";
   }
