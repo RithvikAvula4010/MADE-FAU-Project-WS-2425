@@ -4,7 +4,6 @@ pipeline GraphsPipeline {
     -> bondIssuanceInterpreter
     -> bondIssuancePicker
     -> bondIssuanceDataSelector
-    -> bondIssuanceColumnDeleter
     -> bondIssuanceTableInterpreter
     -> bondIssuanceLoader;
 
@@ -12,7 +11,6 @@ pipeline GraphsPipeline {
     -> gdpPerCapitaInterpreter
     -> gdpPerCapitaPicker
     -> gdpPerCapitaDataSelector
-    -> gdpPerCapitaColumnDeleter
     -> gdpPerCapitaTableInterpreter
     -> gdpPerCapitaLoader;
 
@@ -49,21 +47,14 @@ pipeline GraphsPipeline {
    select: range P2:S45;
  }
 
-   block bondIssuanceColumnDeleter oftype ColumnDeleter {
-   delete: [column B, column C];
- }
-
-   block gdpPerCapitaColumnDeleter oftype ColumnDeleter {
-   delete: [column B, column D];
- }
-
-
   
    block bondIssuanceTableInterpreter oftype TableInterpreter {
     header: true;
     columns: [
       "Country Code" oftype text,
-      "Bond Issuance Share" oftype decimal
+      "Economy" oftype text,
+      "Bond Issuance Share" oftype decimal,
+      "GDP per Capita" oftype decimal
        ];
   }
 
@@ -71,10 +62,11 @@ pipeline GraphsPipeline {
     header: true;
     columns: [
       "Country Code" oftype text,
+      "Economy" oftype text,
+      "Bond Issuance Share" oftype decimal,
       "GDP per Capita" oftype decimal
        ];
   }
-
 
 
     block bondIssuanceLoader oftype SQLiteLoader {
