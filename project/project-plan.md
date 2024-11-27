@@ -49,6 +49,17 @@ This dataset arrest records in Los Angeles from 2020 to now, including details s
 <!-- List of work packages ordered sequentially, each pointing to an issue with more details. -->
 
 1. Explore Datasets [#1][i1]
-2. ...
+2. Project Plan Setup [#2][i2]
+3. Data extraction using data pipeline in Jayvee [#3][i3]
+4. Data transformation and data cleaning [#4][i4]
+5. Create Data report [#5][i5]
 
 [i1]: https://github.com/prathameshagare02/made-template-WS2425/issues/1
+[i2]: https://github.com/prathameshagare02/made-template-WS2425/issues/2
+[i3]: https://github.com/prathameshagare02/made-template-WS2425/issues/3
+[i4]: https://github.com/prathameshagare02/made-template-WS2425/issues/4
+[i5]: https://github.com/prathameshagare02/made-template-WS2425/issues/5
+
+
+
+
