@@ -7,18 +7,17 @@ The Los Angeles Police Department's transition to an NIBRS-compliant crime and a
 ## Main Question
 
 <!-- Think about one main question you want to answer based on the data. -->
-1. In comparison to the prior system, what effects has the implementation of the NIBRS-compliant reporting system had on the accuracy and quality of LAPD's crime and arrest data?
-2. What patterns in crime categories and incident sites have LAPD documented since 2020, and are these patterns different under the new NIBRS system?
-3. What is the impact on data reliability for public usage and decision-making of the regularity and consistency of LAPD data updates (weekly, bi-weekly, and possible interruptions)?
+What is the relationship between the number of reported crimes and arrests made within different age 
+groups in Los Angeles Police Department (LAPD)? Are younger or older age groups more likely to be 
+arrested relative to crime occurrences? 
 
 
 ## Description
 
 <!-- Describe your data science project in max. 200 words. Consider writing about why and how you attempt it. -->
-To comply with the FBI's National Incident-Based Reporting System (NIBRS) regulations, which seek to standardize the gathering of crime and arrest data across the country, the Los Angeles Police Department (LAPD) will introduce a new Records Management System. The community will gain better insights into local crime trends as a result of this move to NIBRS-only data, which will increase the accuracy, detail, and accessibility of Los Angeles crime data.
+The Los Angeles Police Department (LAPD) is working toward an upgrade of their present crime and arrest records' system into one that meets the new requirements of the Federal Bureau of Investigation, known as the National Incident-Based Reporting System (NIBRS). These new standards cover a nationwide scope concerning making data on crimes more consistent, accurate, and specific. Not only will this include input from the community on trends of crime affecting Los Angeles, but also in the future, it will include individuals beyond their immediate surroundings. 
 
-As LAPD works to create the new NIBRS-compatible datasets, users will initially only see occurrences that were logged in the retiring system during the transition. In an effort to preserve data accuracy, the department temporarily switched from weekly to bi-weekly updates due to recent problems providing crime data updates.
-
+At the moment, while LAPD builds this new system, the public will have sight of information only from the old one. To make the records the more accurate during this transition period, the department has switched from updating crime reports each week to updates every other week. 
 
 
 ## Datasources
@@ -33,7 +32,7 @@ As LAPD works to create the new NIBRS-compatible datasets, users will initially 
 * Data Type: CSV
 
 ##### Datasource Description:
-Crime incidents in Los Angeles from 2020 to the present are displayed in this dataset. Since the data is derived from paper reports, a few minor mistakes might exist. For privacy reasons, addresses are only listed to the closest hundred blocks, and location data is displayed as (0°, 0°) if it is missing. Users can post comments or questions, and the data is as accurate as possible.
+This dataset shows crime incidents in Los Angeles from 2020 to now. It includes information like the age and gender of people involved, the location of the crime, and a description of what happened.
 
 ### Datasource2: Arrest Data from 2020 to Present(2024)
 * Metadata Context: https://project-open-data.cio.gov/v1.1/schema/catalog.jsonld
@@ -43,7 +42,7 @@ Crime incidents in Los Angeles from 2020 to the present are displayed in this da
 * Data Type: CSV
 
 ##### Datasource Description:
-This dataset displays arrests that have occurred in Los Angeles since 2020. There may be minor errors because the data is derived from paper reports. Location data is displayed as (0.0000°, 0.0000°) if it is absent, and addresses are only displayed by the closest hundred blocks for privacy reasons. People can leave comments or ask questions, and the information is as accurate as possible.
+This dataset arrest records in Los Angeles from 2020 to now, including details such as arrest date, time, location (latitude/longitude), demographics (age, sex, descent), charge descriptions, and booking information. It provides insights into criminal activity, geographic patterns, and offender profiles. 
 
 ## Work Packages
 
