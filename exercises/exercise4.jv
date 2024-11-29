@@ -1,0 +1,92 @@
+pipeline temperaturePipeline {
+
+    temperatureExtractor
+        -> temperatureZipInterpreter
+        -> temperatureFilePicker
+        -> temperatureTextFileInterpreter
+        -> temperatureCSVInterpreter
+        -> temperatureHeaderWriter
+        -> batteryHeaderWriter
+        -> temperatureTableInterpretor
+        -> temperatureToFahrenheit
+        -> batteryTemperatureToFahrenheit
+        -> temperatureLoader;
+
+    block temperatureExtractor oftype HttpExtractor {
+		url: "https://www.mowesta.com/data/measure/mowesta-dataset-20221107.zip";
+	}
+
+    block temperatureZipInterpreter oftype ArchiveInterpreter {
+        archiveType: "zip";
+    }
+
+    block temperatureFilePicker oftype FilePicker {
+        path:'/data.csv';
+    }
+
+	// Text Interpreter
+	block temperatureTextFileInterpreter oftype TextFileInterpreter {}
+
+	// CSV Interpreter
+	block temperatureCSVInterpreter oftype CSVInterpreter {
+		delimiter: ";";
+	}
+
+    block temperatureHeaderWriter oftype CellWriter {
+        at: range A1:E1;
+        write: ["id", "producer","model","month","temperature"];
+    }
+
+    block batteryHeaderWriter oftype CellWriter {
+        at: cell J1;
+        write:["battery_temperature"];
+    }
+
+    block temperatureTableInterpretor oftype TableInterpreter {
+        header:true;
+        columns: [
+            "id" oftype PostiveInteger,
+            "producer" oftype text,
+            "model" oftype text,
+            "month" oftype integer,
+            "temperature" oftype decimal,
+            "battery_temperature" oftype decimal
+        ];
+    }
+
+	//Transform temperatures in Celsius to Fahrenheit 
+
+	transform CtoF {
+	  from Celsius oftype decimal;
+	  to Fahrenheit oftype decimal;
+	  Fahrenheit: (Celsius * 9/5) + 32;
+	}
+
+	block temperatureToFahrenheit oftype TableTransformer {
+	  inputColumns: ['temperature'];
+	  outputColumn: 'temperature';
+	  uses: CtoF;
+	}
+	 
+	block batteryTemperatureToFahrenheit oftype TableTransformer {
+		inputColumns: ['battery_temperature'];
+		outputColumn: 'battery_temperature';
+		uses: CtoF;
+	}
+
+
+    block temperatureLoader oftype SQLiteLoader {
+        table:'temperatures';
+        file:'temperatures.sqlite';
+    }
+
+	// Validation if number is greater than 0
+	
+    valuetype PostiveInteger oftype integer {
+        constraints: [PositiveConstraint];
+    }
+	
+    constraint PositiveConstraint on integer:
+        value >= 0;
+
+}
