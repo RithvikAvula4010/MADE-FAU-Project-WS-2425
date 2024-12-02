@@ -102,7 +102,16 @@ def validate_age_column(sql_filepath, table_name):
         print(f"Age column is missing in {table_name}.")
 
 def get_sql_file_path(directory, filename):
-    return os.path.join(os.getcwd(), directory, filename)
+    # Save the current working directory
+    original_directory = os.getcwd()
+    # Change to the parent directory (one level up)
+    os.chdir('..')
+    # Construct the new path after changing the directory
+    sql_file_path = os.path.join(os.getcwd(), directory, filename)
+    # Change back to the original directory
+    os.chdir(original_directory)
+    return sql_file_path
+ 
 
 def test_datasets():
     # Test 1: arrestdata Data
@@ -146,4 +155,4 @@ def test_datasets():
     print("All test runs have been finished.")
 
 if __name__ == "__main__":
-    test_datasets()
+    test_datasets()  # Run validation tests
