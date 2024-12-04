@@ -11,7 +11,7 @@ set -e
 
 # Ensure all dependencies are installed
 echo "Installing required dependencies..."
-pip install -r requirements.txt > /dev/null 2>&1 || pip install pandas requests
+pip install pandas requests
 
 # Run the test suite using unittest
 echo "Running unit tests..."
