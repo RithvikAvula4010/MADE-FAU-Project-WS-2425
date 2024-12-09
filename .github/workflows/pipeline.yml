@@ -29,5 +29,5 @@ jobs:
              
       - name: Run MADE Automated test
         run: 
-            bash ./project/test.sh
+            bash ./project/tests.sh
             
