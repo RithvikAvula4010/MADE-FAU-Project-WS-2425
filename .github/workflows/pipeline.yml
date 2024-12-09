@@ -1,3 +1,4 @@
+
 name: MADE Project Pipeline
 
 on:
@@ -6,28 +7,32 @@ on:
       - main
 
 jobs:
-  made-pipeline:
+  test:
     runs-on: ubuntu-latest
 
     steps:
-      - name: Checkout code
-        uses: actions/checkout@v2
+    - name: Checkout Repository
+      uses: actions/checkout@v2
 
       # Install npm
-      - name: Set up npm
-        uses: actions/setup-node@v3
+    - name: Set up npm
+      uses: actions/setup-node@v3
 
-      - name: Install jayvee 
-        run: 
-          npm install -g @jvalue/jayvee-interpreter@0.6.4
+    - name: Install jayvee 
+      run: 
+        npm install -g @jvalue/jayvee-interpreter@0.6.4
 
-      # Install python
-      - name: Set up Python 3.11
-        uses: actions/setup-python@v4
-        with:
-          python-version: 3.11
-             
-      - name: Run MADE Automated test
-        run: 
-            bash project/tests.sh
-            
+    - name: Set up Python 3.12
+      uses: actions/setup-python@v4
+      with:
+        python-version: 3.12
+
+    - name: Install Dependencies
+      run: |
+        python -m pip install --upgrade pip
+        pip install -r ./project/requirement.txt
+
+    - name: Pipeline Tests
+      run: |
+        chmod +x ./project/tests.sh
+        ./project/tests.sh
