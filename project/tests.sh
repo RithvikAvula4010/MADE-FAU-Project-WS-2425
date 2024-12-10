@@ -1,2 +1,2 @@
 #!/bin/bash
-python project/tests.py
+python sed -i 's/\r$//' project/tests.py
