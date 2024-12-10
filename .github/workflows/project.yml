@@ -24,11 +24,6 @@ jobs:
         run: |
           python -m pip install --upgrade pip
           pip install -r ./project/requirements.txt
-
-      - name: Check if directory exists and tests.sh location
-        run: |
-          ls -l ./project
-          find ./project -name "tests.sh"
   
       - name: Run tests.sh
         run: |
