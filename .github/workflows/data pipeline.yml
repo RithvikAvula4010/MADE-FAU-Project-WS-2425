@@ -29,7 +29,7 @@ jobs:
       # Step 4: Run the Data Pipeline
       - name: Run Data Pipeline
         run: |
-          python project/automated_pipeline.py
+          jayvee project/automated_pipeline.jv
 
       # Step 5: Run Automated Tests
       - name: Run Automated Tests
