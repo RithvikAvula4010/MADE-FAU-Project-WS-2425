@@ -3,4 +3,3 @@ sqlalchemy
 opendatasets
 openpyxl
 pysqlite3
-sqlite
