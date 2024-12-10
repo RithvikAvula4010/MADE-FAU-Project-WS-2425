@@ -32,8 +32,12 @@ jobs:
 
     - name: Make tests.sh executable
       run: |
-        chmod +x ./project/tests.sh
+       chmod +x ./project/tests.sh
+
+    - name: Run pipeline
+      run: |
+        python ./project/pipeline.py
 
     - name: Run tests
       run: |
-        ./project/tests.sh
+       ./project/tests.sh
