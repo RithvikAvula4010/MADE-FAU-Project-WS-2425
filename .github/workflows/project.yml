@@ -34,4 +34,4 @@ jobs:
         python ./project/pipeline.py
 
     - name: Run tests
-      run: ./project/tests.sh
+      run: bash ./project/tests.sh
