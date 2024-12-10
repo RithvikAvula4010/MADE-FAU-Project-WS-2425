@@ -26,18 +26,12 @@ jobs:
         python -m pip install --upgrade pip
         pip install -r ./project/requirements.txt
 
-    - name: Run pipeline
-      run: |
-        python ./project/pipeline.py
-
     - name: Make tests.sh executable
-      run: |
-       chmod +x ./project/tests.sh
+      run: chmod +x ./project/tests.sh
 
     - name: Run pipeline
       run: |
         python ./project/pipeline.py
 
     - name: Run tests
-      run: |
-       ./project/tests.sh
+      run: ./project/tests.sh
