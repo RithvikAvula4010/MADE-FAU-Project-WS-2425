@@ -21,10 +21,11 @@ jobs:
       run: 
         npm install -g @jvalue/jayvee-interpreter@0.6.4
 
-    - name: Set up Python 3.12
+      # Step 2: Set up Python environment
+    - name: Set up Python 3.11
       uses: actions/setup-python@v4
       with:
-        python-version: 3.12
+        python-version: 3.11
 
     - name: Install Dependencies
       run: |
