@@ -26,12 +26,10 @@ jobs:
           python -m pip install --upgrade pip
           pip install -r project/requirement.txt
           
-      # Step 4: Run the Data Pipeline
-      - name: Run Data Pipeline
-        run: |
-          bash project/pipeline.sh
+      - name: Run MADE Pipeline
+        run: 
+            bash project/pipeline.sh 
 
-      # Step 5: Run Automated Tests
-      - name: Run Automated Tests
-        run: |
-          bash project/tests.sh
+      - name: Run MADE Automated test
+        run: 
+            bash project/tests.sh
