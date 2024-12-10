@@ -28,8 +28,8 @@ jobs:
 
       # Step 4: Set execute permission for tests.sh
       - name: Set execute permission for tests.sh
-        run: chmod +x project/tests.sh
+        run: chmod +x ./project/tests.sh
 
       # Step 5: Run MADE Automated test
       - name: Run MADE Automated test
-        run: bash project/tests.sh
+        run: bash ./project/tests.sh
