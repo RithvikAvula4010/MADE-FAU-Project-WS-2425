@@ -32,7 +32,6 @@ jobs:
         python -m pip install --upgrade pip
         pip install -r ./project/requirement.txt
 
-    - name: Pipeline Tests
+    - name: Run Automated Tests
       run: |
-        chmod +x ./project/tests.sh
-        ./project/tests.sh
+        bash project/test.sh
