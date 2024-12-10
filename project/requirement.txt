@@ -2,4 +2,4 @@ pandas
 sqlalchemy
 opendatasets
 openpyxl
-pysqlite3
+sqlite3
