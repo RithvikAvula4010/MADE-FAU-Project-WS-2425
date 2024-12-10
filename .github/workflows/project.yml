@@ -27,11 +27,11 @@ jobs:
         pip install -r ./project/requirements.txt
 
     - name: Make tests.sh executable
-      run: chmod +x ./project/tests.sh
+      run: chmod +x ./project/test.sh
 
     - name: Run pipeline
       run: |
         python ./project/pipeline.py
 
     - name: Run tests
-      run: bash ./project/tests.sh
+      run: bash ./project/test.sh
