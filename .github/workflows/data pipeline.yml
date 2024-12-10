@@ -26,10 +26,14 @@ jobs:
           python -m pip install --upgrade pip
           pip install -r project/requirement.txt
 
-      # Step 4: Set execute permission for tests.sh
-      - name: Set execute permission for tests.sh
-        run: chmod +x ./project/tests.sh
+      # Step 4: Fix line endings
+      - name: Fix line endings for tests.py
+        run: sed -i 's/\r$//' project/tests.py
 
-      # Step 5: Run MADE Automated test
+      # Step 5: Set execute permission for tests.sh
+      - name: Set execute permission for tests.sh
+        run: chmod +x project/tests.sh
+
+      # Step 6: Run MADE Automated test
       - name: Run MADE Automated test
         run: bash ./project/tests.sh
