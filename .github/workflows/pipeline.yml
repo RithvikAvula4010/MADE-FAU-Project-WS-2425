@@ -29,8 +29,8 @@ jobs:
     - name: Install Dependencies
       run: |
         python -m pip install --upgrade pip
-        pip install -r project/requirement.txt
+        pip install -r ./project/requirement.txt
 
     - name: Run Automated Tests
       run: |
-        bash project/tests.sh
+        bash ./project/tests.sh
