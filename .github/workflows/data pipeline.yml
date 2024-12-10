@@ -27,8 +27,8 @@ jobs:
           pip install -r ./project/requirement.txt
 
       # Step 4: Fix line endings
-      #- name: Fix line endings for tests.py
-      #  run: sed -i 's/\r$//' project/tests.py
+      - name: Fix line endings for tests.py
+        run: sed -i 's/\r$//' ./project/tests.py
 
       # Step 5: Set execute permission for tests.sh
       - name: Set execute permission for tests.sh
