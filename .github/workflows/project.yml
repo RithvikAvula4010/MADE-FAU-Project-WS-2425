@@ -30,6 +30,10 @@ jobs:
       run: |
         python ./project/pipeline.py
 
+    - name: Convert line endings of tests.sh
+      run: |
+        dos2unix ./project/tests.sh
+
     - name: Set execute permissions for tests.sh
       run: |
         chmod +x ./project/tests.sh
