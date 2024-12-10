@@ -1,4 +1,3 @@
-
 name: MADE Project Pipeline
 
 on:
@@ -7,7 +6,7 @@ on:
       - main
 
 jobs:
-  test:
+  data-pipeline:
     runs-on: ubuntu-latest
 
     steps:
