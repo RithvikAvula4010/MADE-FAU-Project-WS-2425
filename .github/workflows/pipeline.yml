@@ -34,4 +34,4 @@ jobs:
 
     - name: Run Automated Tests
       run: |
-        python ./project/tests.py
+        bash ./project/tests.sh
