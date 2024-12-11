@@ -28,8 +28,8 @@ jobs:
 
     - name: Run pipeline
       run: |
-        python pipeline.py
+        python project/pipeline.py
 
     - name: Run tests
       run: |
-        pytest test.py
+        pytest project/test.py
