@@ -30,10 +30,6 @@ jobs:
       run: |
         python project/pipeline.py
 
-    - name: Convert line endings for tests.sh
-      run: |
-        dos2unix project/tests.sh
-
     - name: Run tests
       run: |
         bash project/tests.sh
