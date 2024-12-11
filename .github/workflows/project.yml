@@ -1,40 +1,35 @@
-name: Github Actions MADE
-run-name: Running System-Test
+name: CI
 
 on:
   push:
     branches:
       - main
-    paths:
-      - project/**
+  pull_request:
+    branches:
+      - main
 
 jobs:
-  system-test-feedback:
+  test:
     runs-on: ubuntu-latest
+
     steps:
-      - name: Checkout Project Reps.
-        uses: actions/checkout@v3
+    - name: Checkout repository
+      uses: actions/checkout@v3
 
-      - name: Set python version 3.11
-        uses: actions/setup-python@v5
-        with:
-          python-version: '3.x'
+    - name: Set up Python
+      uses: actions/setup-python@v4
+      with:
+        python-version: '3.x'
 
-      - name: Install dependencies
-        run: |
-          pip install requests
-          pip install pandas
+    - name: Install dependencies
+      run: |
+        python -m pip install --upgrade pip
+        pip install -r requirements.txt
 
-      - name: Fix Line Endings
-        run: dos2unix ./project/tests.sh
+    - name: Run pipeline
+      run: |
+        python ./python/pipeline.py
 
-      - name: Debug Script
-        run: |
-          bash -n ./project/tests.sh
-          bash -x ./project/tests.sh
-
-      - name: Run tests.sh
-        run: |
-          chmod +x ./project/tests.sh
-          ./project/tests.sh
-          echo "> Test Done!"
+    - name: Run tests
+      run: |
+        pytest .python/test.py
