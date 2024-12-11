@@ -39,10 +39,6 @@ jobs:
        python -m site  # Display Python site-packages path
        pip freeze      # Confirm installed packages
 
-    - name: Run pipeline
-      run: |
-       bash project/pipeline.sh
-
     - name: Run tests
       run: |
         chmod +x project/tests.sh  # Ensure the script is executable
