@@ -15,6 +15,14 @@ jobs:
     steps:
     - name: Checkout repository
       uses: actions/checkout@v3
+      # Install npm
+    - name: Set up npm
+      uses: actions/setup-node@v3
+
+    - name: Install jayvee 
+      run: 
+        npm install -g @jvalue/jayvee-interpreter@0.6.4
+  
 
     - name: Set up Python
       uses: actions/setup-python@v4
@@ -30,6 +38,10 @@ jobs:
       run: |
        python -m site  # Display Python site-packages path
        pip freeze      # Confirm installed packages
+
+    - name: Run pipeline
+      run: |
+       bash project/pipeline.sh
 
     - name: Run tests
       run: |
