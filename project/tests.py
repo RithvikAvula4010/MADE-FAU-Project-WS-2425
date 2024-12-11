@@ -115,7 +115,8 @@ def get_sql_file_path(directory, filename):
 
 def test_datasets():
     # Test 1: arrestdata Data
-    arrest_sql_filepath = get_sql_file_path("data", "arrestdata.sqlite")
+    #arrest_sql_filepath = get_sql_file_path("data", "arrestdata.sqlite")
+    arrest_sql_filepath = os.path.join(os.getcwd(), "data", "arrestdata.sqlite")
     arrest_table_name = "arrestdata"
     print(f"Testing data existence in {arrest_table_name}...")
     test_data_existence(arrest_sql_filepath, arrest_table_name)
@@ -134,7 +135,8 @@ def test_datasets():
 
 
     # Test 2: crimedata Data
-    crime_sql_filepath = get_sql_file_path("data", "crimedata.sqlite")
+    #crime_sql_filepath = get_sql_file_path("data", "crimedata.sqlite")
+    crime_sql_filepath = os.path.join(os.getcwd(),"data", "crimedata.sqlite")
     crime_table_name = "crimedata"
     print(f"Testing data existence in {crime_table_name}...")
     test_data_existence(crime_sql_filepath, crime_table_name)
