@@ -26,9 +26,10 @@ jobs:
         python -m pip install --upgrade pip
         pip install -r project/requirements.txt  # Ensure correct filename and path
 
-    - name: Debug Installed Dependencies
+    - name: Check where dependencies are installed
       run: |
-        pip freeze  # List all installed packages for debugging purposes
+       python -m site  # Display Python site-packages path
+       pip freeze      # Confirm installed packages
 
     - name: Run tests
       run: |
