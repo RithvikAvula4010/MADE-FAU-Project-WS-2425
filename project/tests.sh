@@ -1,26 +1,18 @@
 #!/bin/bash
+#python3 ../project/test.py
 
-# Name: test.sh
-# Description: Script to run unit tests for the data pipeline
+#!/bin/bash
 
-# Exit immediately if a command exits with a non-zero status
-set -e
+# Run pipeline.sh file
+bash project/pipeline.sh
 
-# Activate virtual environment if needed (optional, adjust the path if required)
-# source ./venv/bin/activate
-
-# Ensure all dependencies are installed
-echo "Installing required dependencies..."
-pip install -r requirement.txt > /dev/null 2>&1 || pip install pandas requests
-
-# Run the test suite using unittest
-echo "Running unit tests..."
-python -m unittest discover -s project -p "tests.py"
-
-# Check the exit status of the tests
+# Check if the previous command was successful
 if [ $? -eq 0 ]; then
-    echo "All tests passed successfully!"
+    echo "pipeline.sh ran successfully. Proceeding to run test.py..."
+    
+    # Run the Python script
+    python project/tests.py
 else
-    echo "Some tests failed. Please check the output above."
+    echo "pipeline.sh encountered an error. Exiting script."
     exit 1
 fi
