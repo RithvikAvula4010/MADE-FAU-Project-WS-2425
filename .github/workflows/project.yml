@@ -25,13 +25,16 @@ jobs:
           pip install requests
           pip install pandas
 
-      - name: Check if directory exists and tests.sh location
+      - name: Fix Line Endings
+        run: dos2unix ./project/tests.sh
+
+      - name: Debug Script
         run: |
-          ls -l ./project
-          find ./project -name "tests.sh"
-  
+          bash -n ./project/tests.sh
+          bash -x ./project/tests.sh
+
       - name: Run tests.sh
         run: |
-          chmod +x ../project/tests.sh
-          ../project/tests.sh
+          chmod +x ./project/tests.sh
+          ./project/tests.sh
           echo "> Test Done!"
