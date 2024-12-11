@@ -33,7 +33,3 @@ jobs:
     - name: Run tests
       run: |
         bash project/tests.sh
-
-    - name: Run tests
-      run: |
-       pytest project/test.py
