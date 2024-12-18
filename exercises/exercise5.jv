@@ -9,7 +9,7 @@ pipeline gtfsPipeline {
         -> loadgtfs;
 
     block gtfsExtractor oftype HttpExtractor {
-		url: "https://gtfs.rhoenenergie-bus.de/gtfs.zip";
+		url: "https://gtfs.rhoenenergie-bus.de/GTFS.zip";
 	}
 
     block gtfsZipInterpreter oftype ArchiveInterpreter {
