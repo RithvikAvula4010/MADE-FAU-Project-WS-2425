@@ -21,12 +21,12 @@ class TestDataPipeline(unittest.TestCase):
 
     def test_sqlite_file_exists(self):
         # Check if the SQLite database file exists
-        self.assertTrue(os.path.isfile('./data/ClimateData_revised.sqlite'),
+        self.assertTrue(os.path.isfile('./data/GenerationToSales.sqlite'),
                         "SQLite database file does not exist")
 
     def test_sqlite_table_content(self):
         # Connect to the SQLite database and check if the table has data
-        conn = sqlite3.connect('./data/ClimateData_revised.sqlite')
+        conn = sqlite3.connect('./data/GenerationToSales.sqlite')
         query = "SELECT COUNT(*) FROM ElectricityData"
         cursor = conn.cursor()
         cursor.execute(query)
@@ -36,7 +36,7 @@ class TestDataPipeline(unittest.TestCase):
 
     def test_merged_data_integrity(self):
         # Connect to the SQLite database and validate the merged data
-        conn = sqlite3.connect('./data/ClimateData_revised.sqlite')
+        conn = sqlite3.connect('./data/GenerationToSales.sqlite')
         df = pd.read_sql_query("SELECT * FROM ElectricityData", conn)
         conn.close()
         self.assertFalse(df.empty, "Merged data in the database is empty")
