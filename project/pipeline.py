@@ -55,9 +55,9 @@ class Pipeline:
         merged_df.drop(columns=columns_to_drop, inplace=True, errors='ignore')
         
         # Save to SQLite
-        conn = sqlite3.connect('./data/ClimateData_revised.sqlite')
+        conn = sqlite3.connect('./data/GenerationToSales.sqlite')
         merged_df.to_sql('ElectricityData', conn, if_exists='replace', index=False)
-        connection = sqlite3.connect("./data/ClimateData_revised.sqlite")  # Replace with your database file name
+        connection = sqlite3.connect("./data/GenerationToSales.sqlite")  # Replace with your database file name
         cursor = connection.cursor()
         query = "SELECT * FROM ElectricityData"  # Replace 'your_table_name' with the table you're querying
         cursor.execute(query)
