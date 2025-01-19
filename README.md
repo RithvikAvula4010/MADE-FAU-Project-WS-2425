@@ -1,10 +1,31 @@
-# Methods of Advanced Data Engineering Template Project
+# The Los Angeles Police Department's transition to a NIBRS compliant crime and arrest reporting system
+The project investigates crime and arrest data from Los Angeles (2020 2024) associated with the Los Angeles Police Department (LAPD) implementation of the National Incident Based Reporting System (NIBRS). The project analyzes trends of crime by age, gender, and other geographic location in order to locate and address patterns and disparities. Key findings imply that young as well as middle-aged adults are the most heavily involved in committing crimes and getting arrested, but there are really big differences among neighborhoods. The analysis is intended to better design law enforcement strategies, the allocation of resources, and specific targeted interventions that would contribute to the improvement of public safety while tending to a more effective crime prevention system. 
 
-This template project provides some structure for your open data project in the MADE module at FAU.
-This repository contains (a) a data science project that is developed by the student over the course of the semester, and (b) the exercises that are submitted over the course of the semester.
+## Question
+What is the relationship between the number of reported crimes and arrests made within different age groups in Los Angeles Police Department (LAPD)? Are younger or older age groups more likely to be arrested relative to crime occurrences? 
 
-To get started, please follow these steps:
-1. Create your own fork of this repository. Feel free to rename the repository right after creation, before you let the teaching instructors know your repository URL. **Do not rename the repository during the semester**.
+
+## Datasources
+<!-- Describe each datasources you plan to use in a section. Use the prefic "DatasourceX" where X is the id of the datasource. -->
+
+### Datasource1: Crime Data from 2020 to Present (2024)
+This dataset shows crime incidents in Los Angeles from 2020 to now. It includes information like the age and gender of people involved, the location of the crime, and a description of what happened. 
+
+
+* Metadata Context: <https://project-open-data.cio.gov/v1.1/schema/catalog.jsonld>
+
+* Data URL: <https://data.lacity.org/api/views/2nrs-mtv8/rows.csv?accessType=DOWNLOAD>
+
+* Data Type: CSV
+
+### Datasource2: Arrest Data from 2020 to Present (2024)
+This dataset arrest records in Los Angeles from 2020 to now, including details such as arrest date, time, location (latitude/longitude), demographics (age, sex, descent), charge descriptions, and booking information. It provides insights into criminal activity, geographic patterns, and offender profiles. 
+
+* Metadata Context: <https://project-open-data.cio.gov/v1.1/schema/catalog.jsonld>
+
+* Data URL: <https://data.lacity.org/api/views/amvf-fr72/rows.csv?accessType=DOWNLOAD>
+
+* Data Type: CSV
 
 ## Project Work
 Your data engineering project will run alongside lectures during the semester. We will ask you to regularly submit project work as milestones, so you can reasonably pace your work. All project work submissions **must** be placed in the `project` folder.
