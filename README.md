@@ -2,7 +2,7 @@
 <h1 align="center"> The Los Angeles Police Department's transition to a NIBRS compliant crime and arrest reporting system
 
 
-[![License: CC0 1.0 Universal](https://img.shields.io/badge/License-CC0_1.0_Universal-lightgrey.svg)](https://creativecommons.org/publicdomain/zero/1.0/legalcode)	[![Python 3.12](https://img.shields.io/badge/Python-3.12-blue.svg)](https://www.python.org/downloads/release/python-3110/) [![CI/CD](https://github.com/prathameshagare02/made-template-WS2425/actions/workflows/data%20pipeline.yml/badge.svg)](https://github.com/prathameshagare02/made-template-WS2425/actions/workflows/data%20pipeline.yml)
+[![License: CC0 1.0 Universal](https://img.shields.io/badge/License-CC0_1.0_Universal-lightgrey.svg)](https://creativecommons.org/publicdomain/zero/1.0/legalcode)	  [![Jayvee 0.6.4](https://img.shields.io/badge/Jayvee-0.6.4-yellowgreen.svg)](https://jvalue.github.io/jayvee/docs/dev/intro) [![Python 3.12](https://img.shields.io/badge/Python-3.12-blue.svg)](https://www.python.org/downloads/release/python-3128/) [![CI/CD](https://github.com/prathameshagare02/made-template-WS2425/actions/workflows/data%20pipeline.yml/badge.svg)](https://github.com/prathameshagare02/made-template-WS2425/actions/workflows/data%20pipeline.yml)
 
 </div>
 
