@@ -4,7 +4,7 @@
 
 [![License: CC0 1.0 Universal](https://img.shields.io/badge/License-CC0_1.0_Universal-lightgrey.svg)](https://creativecommons.org/publicdomain/zero/1.0/legalcode)	  [![Jayvee 0.6.4](https://img.shields.io/badge/Jayvee-0.6.4-yellowgreen.svg)](https://jvalue.github.io/jayvee/docs/dev/intro) [![Python 3.12](https://img.shields.io/badge/Python-3.12-blue.svg)](https://www.python.org/downloads/release/python-3128/)
 
-<br><img src="https://github.com/prathameshagare02/made-template-WS2425/blob/main/data/crimepng.jpg" width="1000" height="500">
+<br><img src="data/DALL·E 2025-01-22 23.06.51 - An artistic illustration of electricity flowing from various power plants (nuclear, solar, wind, and coal) represented visually with glowing, color-co.webp" width="1000" height="500">
 
 </div>
 
