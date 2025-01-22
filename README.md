@@ -4,76 +4,71 @@
 
 [![License: CC0 1.0 Universal](https://img.shields.io/badge/License-CC0_1.0_Universal-lightgrey.svg)](https://creativecommons.org/publicdomain/zero/1.0/legalcode)	  [![Jayvee 0.6.4](https://img.shields.io/badge/Jayvee-0.6.4-yellowgreen.svg)](https://jvalue.github.io/jayvee/docs/dev/intro) [![Python 3.12](https://img.shields.io/badge/Python-3.12-blue.svg)](https://www.python.org/downloads/release/python-3128/) [![CI/CD](https://github.com/prathameshagare02/made-template-WS2425/actions/workflows/data%20pipeline.yml/badge.svg)](https://github.com/prathameshagare02/made-template-WS2425/actions/workflows/data%20pipeline.yml)
 
+<br><img src="https://github.com/prathameshagare02/made-template-WS2425/blob/main/data/crimepng.jpg" width="1000" height="500">
+
 </div>
 
-<div style="text-align: justify">
-    
+---
 
-### Description
-The project investigates crime and arrest data from Los Angeles (2020 2024) associated with the Los Angeles Police Department (LAPD) implementation of the National Incident Based Reporting System (NIBRS). The project analyzes trends of crime by age, gender, and other geographic location in order to locate and address patterns and disparities. Key findings imply that young as well as middle-aged adults are the most heavily involved in committing crimes and getting arrested, but there are really big differences among neighborhoods. The analysis is intended to better design law enforcement strategies, the allocation of resources, and specific targeted interventions that would contribute to the improvement of public safety while tending to a more effective crime prevention system. 
+## **Overview**
+This project explores crime and arrest data in Los Angeles (2020–2024) during the Los Angeles Police Department’s (LAPD) transition to a **National Incident-Based Reporting System (NIBRS)**. Our goal is to analyze crime trends by **age, gender, and geography**, providing insights to enhance **law enforcement strategies, resource allocation**, and targeted interventions for improved public safety.
 
-## Question
+---
+
+## **Research Question**
 What is the relationship between the number of reported crimes and arrests made within different age groups in Los Angeles Police Department (LAPD)? Are younger or older age groups more likely to be arrested relative to crime occurrences? 
 
+---
 
-## Data sources
-<!-- Describe each datasources you plan to use in a section. Use the prefic "DatasourceX" where X is the id of the datasource. -->
+## **Data Sources**
 
-### Data Source 1: Crime Data from 2020 to Present (2024)
-This dataset shows crime incidents in Los Angeles from 2020 to now. It includes information like the age and gender of people involved, the location of the crime, and a description of what happened. 
+### **Crime Data (2020–2024)**
+- **Details**: Crime incidents, including age, gender, crime location, and descriptions.  
+- **License**: [Public Domain](http://creativecommons.org/publicdomain/zero/1.0/legalcode)  
+- **Data URL**: [Crime Data CSV](https://data.lacity.org/api/views/2nrs-mtv8/rows.csv?accessType=DOWNLOAD)  
 
+### **Arrest Data (2020–2024)**
+- **Details**: Arrest records with demographics, location, charges, and booking info.  
+- **License**: [Public Domain](http://creativecommons.org/publicdomain/zero/1.0/legalcode)  
+- **Data URL**: [Arrest Data CSV](https://data.lacity.org/api/views/amvf-fr72/rows.csv?accessType=DOWNLOAD)  
 
-* Metadata Context: <https://project-open-data.cio.gov/v1.1/schema/catalog.jsonld>
+For more details, refer to the [**Data Report**](project/data-report.pdf).
 
-* License: <http://creativecommons.org/publicdomain/zero/1.0/legalcode>
+---
 
-* Data URL: <https://data.lacity.org/api/views/2nrs-mtv8/rows.csv?accessType=DOWNLOAD>
+## **ETL Pipeline Overview**
+The ETL pipeline is built with **Jayvee**, a Domain-Specific Language (DSL) for data pipelines. It extracts, cleans, and processes crime and arrest data, ensuring it is accurate and follows privacy rules. The final output is stored in a SQLite file, making it easy to use for analysis and reporting.
 
-* Data Type: CSV
+### **Pipeline Process**
+1. **Extraction**: Fetch crime and arrest datasets.  
+2. **Transformation**: Filter invalid entries (e.g., negative ages, invalid genders).  
+3. **Loading**: Store cleaned data for analysis.  
 
-### Data Source 2: Arrest Data from 2020 to Present (2024)
-This dataset arrest records in Los Angeles from 2020 to now, including details such as arrest date, time, location (latitude/longitude), demographics (age, sex, descent), charge descriptions, and booking information. It provides insights into criminal activity, geographic patterns, and offender profiles. 
-
-* Metadata Context: <https://project-open-data.cio.gov/v1.1/schema/catalog.jsonld>
-
-* License: <http://creativecommons.org/publicdomain/zero/1.0/legalcode>
-
-* Data URL: <https://data.lacity.org/api/views/amvf-fr72/rows.csv?accessType=DOWNLOAD>
-
-* Data Type: CSV
-
-You can find the more details in [**data report**](project/data-report.pdf).
-
-## Data Pipeline
-The project uses a structured ETL (Extract, Transform, Load) pipeline method, which is saved in <b><i>/project/automated_pipeline.jv</i></b>. The command <b><i>jayvee project/automated_pipeline.jv</i></b> is used to begin the pipeline.
-
-* The ETL pipeline is build with Jayvee. Jayvee is the Domain-specific language (DSL) to model data pipelines.  Basically, it extracts public datasets including Crime Data from 2020 to Present (2024) and Arrest Data from 2020 to Present (2024).  
-* The process of data cleaning only contains records with positive age value and will filter out all invalid entries with negative age records. Gender will also be validated such that only "male" and "female" entries will be accepted for the purposes of data consistency and accuracy. 
-* The loaded crime and arrest data will be examined at an analytical level with respect to trends, contiguities, and attributions in between patterns of crime phenomena, different demographic factors, and geographical influences on arrest rates.
-
-#### Run the data pipeline:
-To run data pipeline, run the following command
-
-```
-  bash project/pipeline.sh
-```
-#### Running Tests
-
-To run tests, run the following command
-
-```
-  bash project/tests.sh
+To run the pipeline:
+```bash
+bash project/pipeline.sh
 ```
 
-## Project Analysis
-The Age-wise, Middle-Aged Adults and Young Adults generally experience a load of arrests comparatively, while Children and Old-Aged Adults feature lower figures, presumably pointing towards differences in enforcement or crime types committed. The analysis calls for targeted interventions, improved resource allocation, and age-specific strategies to settle disparities. It will be imperative to improve law enforcement efforts in the less productive regions about building a much more level, effective, and fair system for treating crime across both demographics and regions in its full strength.
+To run tests:
+```bash
+bash project/tests.sh
+```
 
-You can find the more details in [**analysis report**](project/analysis-report.pdf).
+---
 
-## License
-This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
+## **Analysis Summary**
+- **Age Groups**: Young adults (17–30) and middle-aged adults (31–45) are most involved in crimes and arrests.  
+- **Safer Areas**: Devonshire and West Valley.  
+- **High-Crime Areas**: Central, Olympic, Southwest, Mission, Rampart.
 
-</div>
+#### **Recommendations**
+- Focus resources on high-crime areas.  
+- Target interventions for young and middle-aged adults. 
+- Use community programs and predictive tools for prevention.
+
+Detailed insights are available in the [**Analysis Report**](project/analysis-report.pdf).
+
+---
 
 ## Exercises
 During the semester you will need to complete exercises using [Jayvee](https://github.com/jvalue/jayvee). You **must** place your submission in the `exercises` folder in your repository and name them according to their number from one to five: `exercise<number from 1-5>.jv`.
@@ -97,3 +92,11 @@ Grading Exercise 1
 		Shape: 4 of 4
 		Types: 13 of 13
 ```
+
+
+---
+
+## **License**
+This project is licensed under the **MIT License**. See the [LICENSE](LICENSE) file for details.
+
+
